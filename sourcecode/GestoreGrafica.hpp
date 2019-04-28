@@ -1,6 +1,6 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_image.h>
-
+#include "Tubo.hpp"
 
 #ifndef GESTOREGRAFICA_H
 #define GESTOREGRAFICA_H
@@ -18,7 +18,9 @@ class GestoreGrafica
     public:
         GestoreGrafica();
         GestoreGrafica(const int&, const int& ,const int&, const int&, ALLEGRO_BITMAP *, ALLEGRO_DISPLAY *);
-        ~GestoreGrafica();
+        ~GestoreGrafica() {}  
+        void DisegnaTubo(Tubo* );
+        void flipDisplay();
         };
 
         #endif
