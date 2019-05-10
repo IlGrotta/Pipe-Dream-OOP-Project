@@ -14,19 +14,24 @@ protected:
     string pathPng; int tipoTubo; int cont; int dirAcqua;
     bool acqua;
     int Riga;  int Colonna;
+
+    
 public:
      Tubo();
      Tubo(int);
-    virtual void AumentaCont();
-    virtual ~Tubo(){};
+     void AumentaCont();
+    
     void SetCoordinate(int,int);
     virtual string getPath();
-     int getTipoTubo();
+    virtual int getTipoTubo();
     int getCont();
     int getDirAcqua();
     bool getAcqua();
     int getRiga();
     int getColonna();
+
+
+    virtual ~Tubo(){};
 }; //fine classe
 
 

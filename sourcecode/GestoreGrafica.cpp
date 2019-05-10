@@ -29,19 +29,51 @@ void GestoreGrafica::DisegnaTubo(Tubo* tubo)
                 bitmap=al_load_bitmap(pathAcquaC);
                 al_draw_bitmap(bitmap,tubo->getColonna()*32, tubo->getRiga()*32, 0);     
                                 }
+                            
             al_destroy_bitmap(bitmap);
-            string pathTubo= tubo->getPath()+"/pipe.png"; 
-            const char* pathTuboC=pathTubo.c_str();
-            bitmap=al_load_bitmap(pathTuboC);
+            string pathTubo= tubo->getPath()+"pipe.png"; 
+            bitmap=al_load_bitmap(pathTubo.c_str());
+            al_draw_bitmap(bitmap,tubo->getColonna()*32, tubo->getRiga()*32, 0);     
+
+        al_destroy_bitmap(bitmap);
+    }
+
+
+    void GestoreGrafica::DisegnaTubo(Tubo* tubo,int riga,int colonna)
+
+    {
+        ALLEGRO_BITMAP* bitmap=NULL;
+        al_set_target_bitmap(buffer);
+        
+        
+            string pathTubo= tubo->getPath()+"pipe.png"; 
+           
+            bitmap=al_load_bitmap(pathTubo.c_str());
+            al_draw_bitmap(bitmap,colonna*32, riga*32, 0);     
+
         al_destroy_bitmap(bitmap);
     }
 
 void GestoreGrafica::flipDisplay()
     {
+     
         al_set_target_bitmap(al_get_backbuffer(display));
-        al_clear_to_color(al_map_rgb(0, 0, 0));
+       
         al_draw_scaled_bitmap(buffer, 0, 0, WINDOWW, WINDOWH, scale_x, scale_y, scale_w, scale_h, 0);
         al_flip_display();
+        al_set_target_bitmap(buffer);
+        al_clear_to_color(al_map_rgb(0,0,0));
+        
     }
 
+void GestoreGrafica::DisegnaGiocatore(Giocatore* giocatore){
+        al_set_target_bitmap(buffer);
+        al_draw_bitmap(giocatore->getBitmap(), giocatore->getColonna()*32, giocatore->getRiga()*32, 0);     
+    }
+
+
+void GestoreGrafica::DisegnaBackground(){
+ al_set_target_bitmap(buffer);
+        al_clear_to_color(al_map_rgb(111,111,212));
+}
 
